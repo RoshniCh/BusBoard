@@ -16,4 +16,3 @@ request.onreadystatechange = function ()
 }
 request.send()
 
-reqArray
