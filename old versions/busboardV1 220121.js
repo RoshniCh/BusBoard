@@ -21,23 +21,16 @@ function findBuses(reqArray)
 {
 var buses = []
 for (let i = 0; i <reqArray.length; i++)
+// {     
+//       buses[i+1] = [reqArray[i].lineId, reqArray[i].timeToStation, reqArray[i].towards]
+// }
 {     
-      buses.push({ line: reqArray[i].lineId, time: reqArray[i].timeToStation, destination: reqArray[i].towards})
+      buses.push({'Line': reqArray[i].lineId, 'Time': reqArray[i].timeToStation, 'Destination': reqArray[i].towards})
 }
-
-// console.log(buses)
-buses.sort((a, b) => {
-      return a.time - b.time
-  })
-// console.log(buses)
-let topFive = [];
-while (topFive.length < 5 && topFive.length < buses.length){
-    buses.forEach(bus => topFive.push(bus))
+// reqArray.forEach(bus => 
+// {
+//       buses[bus.lineId] = bus.timeToStation
+// })
+console.log(buses)
 }
-console.log(topFive)
-}
-
-
-
-
 
