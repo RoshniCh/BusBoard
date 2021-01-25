@@ -139,7 +139,7 @@ function findBuses(reqArray)
       {
       topFive.push(buses[a])   
       }
-      if (reqArray[0].platformName === null) 
+      if (reqArray[0].platformName === 'null') 
       {
         console.log(`${reqArray[0].stationName}`)
       }
