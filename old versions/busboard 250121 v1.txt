@@ -1,0 +1,47 @@
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
+
+var request = new XMLHttpRequest()
+
+var reqArray 
+var url = 'https://api.tfl.gov.uk/StopPoint/490008660N/Arrivals'
+request.open('GET', url, true)
+request.onreadystatechange = function () 
+{
+     if (request.readyState === 4) 
+     {
+      console.log(request.status);
+      reqArray = JSON.parse(request.responseText)
+//      console.log(reqArray);
+      findBuses1(reqArray)
+     }
+}
+request.send()
+
+function findBuses1(reqArray)
+{
+
+//selecting required columns      
+var buses = []
+for (let i = 0; i <reqArray.length; i++)
+{     
+      buses.push({ line: reqArray[i].lineId, time: reqArray[i].timeToStation, destination: reqArray[i].towards})
+}
+
+/*sort by time*/
+buses.sort((a, b) => {
+      return a.time - b.time
+  })
+
+//top 5 buses
+let topFive = [];
+for (let a = 0; a<= 4 && a<buses.length; a++)
+{
+   topFive.push(buses[a])   
+}
+console.log(topFive)
+}
+
+
+
+
+
